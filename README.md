@@ -316,10 +316,10 @@ select city.name from city,country where city.countrycode = country.code and cou
 
 Problem Link: https://www.hackerrank.com/challenges/average-population-of-each-continent?isFullScreen=true
 ```
-select country.continent, floor(avg(city.population))
-from city join country
-on city.countrycode=country.code
-group by country.continent;
+SELECT Country.Continent, FLOOR(AVG(City.Population))
+FROM Country, City 
+WHERE Country.Code = City.CountryCode 
+GROUP BY Country.Continent ;
 ```
 
 
