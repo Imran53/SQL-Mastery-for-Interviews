@@ -322,6 +322,38 @@ WHERE Country.Code = City.CountryCode
 GROUP BY Country.Continent ;
 ```
 
+**Department Highest Salary**
+
+Problem Link: https://leetcode.com/problems/department-highest-salary/
+```
+select d.name as department,e.name as employee, e.salary 
+from department d, employee e
+where e.departmentid=d.id
+and e.salary=(select max(salary) from employee e1 
+             where e1.departmentid=d.id);
+```
+
+**Department Top Three Salaries**
+
+Problem Link: https://leetcode.com/problems/department-top-three-salaries/
+```
+select d.name as Department, e1.name as Employee, e1.salary as Salary
+    From Employee as e1  join Department as d
+    on e1.departmentId = d.id
+    where 3 > (Select count(distinct(e2.salary)) 
+            from Employee as e2
+            where e2.salary>e1.salary
+            and e1.departmentId = e2.departmentId);
+```
+
+**Second Highest Salary**
+
+Problem Link: https://leetcode.com/problems/second-highest-salary/
+```
+SELECT MAX(salary) as SecondHighestSalary
+FROM Employee
+WHERE salary < (SELECT MAX(salary) FROM Employee);
+```
 
 **Dept wise highest salary**
 ```
